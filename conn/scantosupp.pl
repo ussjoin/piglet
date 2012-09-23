@@ -1,11 +1,15 @@
 #!/usr/bin/perl
 
+use strict;
+
 my $device = shift;
 my $outfile = shift;
 
 use YAML::Syck;
+use File::Spec::Functions qw(rel2abs);
+use File::Basename;
 
-my $knownnetworks = LoadFile("networks.yaml");
+my $knownnetworks = LoadFile(dirname(rel2abs($0))."/networks.yaml");
 
 unless ($device && $outfile)
 {

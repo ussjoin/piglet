@@ -26,7 +26,7 @@ for ((a=0; a < numnetworks ; a++))
 do
 	echo "Now connecting to network $a."
 	wpa_cli select $a
-	sleep 2 #It seems to take a second to do the switch.
+	sleep 5 #It seems to take a second to do the switch.
 	wpa_cli status
 	dhclient wlan0 -1 #timeout of 20 seconds in /etc/dhcp/dhclient.conf
 	if [ $? -eq 0 ] #Yay, it worked!
